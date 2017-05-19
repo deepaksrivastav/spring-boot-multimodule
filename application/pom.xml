@@ -7,7 +7,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>sample.multimodule.application</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>Project Module - Application</name>
     <description>This is the main module of the project. It contains Application.java class, that contains main method, 
     necessary to run Spring Boot applications. It contains all necessary application configuration properties. 
