@@ -1,0 +1,116 @@
+= Spring Boot Multimodule project example
+
+Proofs of concept that shows how to generate Spring Boot multimodule
+applications.
+
+=== Description
+
+This project is an Spring Boot multimodule application with the following
+structure.
+
+[source]
+----
+.
+├── application
+│   ├── pom.xml
+│   └── src
+│       └── main
+│           ├── java
+│           │   └── sample
+│           │       └── multimodule
+│           │           ├── SampleWebJspApplication.java
+│           │           └── web
+│           │               └── WelcomeController.java
+│           └── resources
+│               ├── application.properties
+│               └── templates
+│                   └── welcome
+│                       └── show.html
+├── model
+│   ├── pom.xml
+│   └── src
+│       └── main
+│           └── java
+│               └── sample
+│                   └── multimodule
+│                       └── domain
+│                           └── entity
+│                               └── Account.java
+├── pom.xml
+├── repository
+│   ├── pom.xml
+│   └── src
+│       └── main
+│           └── java
+│               └── sample
+│                   └── multimodule
+│                       └── repository
+│                           └── AccountRepository.java
+├── service-api
+│   ├── pom.xml
+│   └── src
+│       └── main
+│           └── java
+│               └── sample
+│                   └── multimodule
+│                       └── service
+│                           └── api
+│                               ├── AccountNotFoundException.java
+│                               └── AccountService.java
+└── service-impl
+    ├── pom.xml
+    └── src
+        └── main
+            └── java
+                └── sample
+                    └── multimodule
+                        └── service
+                            └── impl
+                                └── AccountServiceImpl.java
+
+----
+
+Every module match with some application layer (service layer, repository layer, web layer, model, etc..).
+
+==== Parent - Pom Aggregator
+
+This module is a maven aggregator that contains all application modules. Also, include all 
+common dependencies needed by more than one module. Dependencies are defined without version because
+this project has defined Spring IO Platform as parent.
+
+==== Project Module - Model
+
+Module that contains all Entities and Visual Objects to be used in the project. It doesn't have any dependencies.
+
+==== Project Module - Repository
+
+Module that contains all repositories to be used in the project. Depends of Model Module.
+
+==== Project Module - Service API
+
+Module that contains API of all project services. Depends of Model Module.
+
+==== Project Module - Service Implementation
+
+Module that contains services implementation defined on Service API module. Depends of Repository Module and Service API Module.
+
+==== Project Module - Application
+
+This is the main module of the project. It contains Application.java class,
+that contains main method, necessary to run Spring Boot applications. It
+contains all necessary application configuration properties. It contains all
+web controllers, views and web resources. It include Model Module and Service 
+Implementation module as dependency that contains Model Module, Repository
+Module and Service API module.
+
+=== Test
+
+Follow these instructions to execute application using embedded tomcat server:
+
+* Generate project distribution using *mvn clean install* command on Parent
+  module.
+* Execute *mvn spring-boot:run* command on Application module (contains .war)
+* Open browser on *http://localhost:8080*
+* Test *http://localhost:8080/*. You should see account information with "23"
+  number.
+

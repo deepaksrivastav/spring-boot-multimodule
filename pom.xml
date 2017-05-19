@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!-- Spring IO Platform is the parent of the generated application to
+    be able to use Spring Boot and all its default configuration -->
+    <parent>
+        <groupId>io.spring.platform</groupId>
+        <artifactId>platform-bom</artifactId>
+        <version>2.0.1.RELEASE</version>
+    </parent>
+    <groupId>sample.multimodule</groupId>
+    <artifactId>sample.multimodule</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Parent - Pom Aggregator</name>
+    <description>This pom is a maven aggregator that contains all application modules. Also, include all
+    common dependencies needed by more than one module. Dependencies are defined without version because
+    this project has defined Spring IO Platform as parent.</description>
+
+    <properties>
+      <java.version>1.6</java.version>
+    </properties>
+
+    <modules>
+      <module>model</module>
+      <module>repository</module>
+      <module>service-api</module>
+      <module>service-impl</module>
+      <module>application</module>
+    </modules>
+
+    <dependencies>
+
+      <!-- Spring Boot dependencies -->
+      <dependency>
+			  <groupId>org.springframework.boot</groupId>
+			  <artifactId>spring-boot-starter</artifactId>
+		  </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+      </dependency>
+		  <dependency>
+			  <groupId>org.springframework.boot</groupId>
+			  <artifactId>spring-boot-starter-test</artifactId>
+			  <scope>test</scope>
+		  </dependency>
+    </dependencies>
+
+</project>
+

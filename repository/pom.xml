@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>sample.multimodule</groupId>
+        <artifactId>sample.multimodule</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>sample.multimodule.repository</artifactId>
+    <packaging>jar</packaging>
+    <name>Project Module - Repository</name>
+    <description>Module that contains all repositories to be used in the project. Depends of Model Module.</description>
+
+    <dependencies>
+      <!-- Project modules -->
+      <dependency>
+        <groupId>sample.multimodule</groupId>
+        <artifactId>sample.multimodule.model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <!-- Spring Boot dependencies -->
+      <dependency>
+        <groupId>org.hsqldb</groupId>
+        <artifactId>hsqldb</artifactId>
+        <scope>runtime</scope>
+      </dependency>
+
+    </dependencies>
+    
+</project>
